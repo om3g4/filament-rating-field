@@ -109,7 +109,6 @@
                 x-tooltip.raw="{{ $getTooltip($i) }}"
                 x-ref="{{$getRefId('ratingIcons', $i)}}">
                 @include('filament-rating-field::forms.components._rating-item', [
-                    'index' => $i,
                     'component' => $i <= $getState() ? $getSelectedIcon() : $getIcon(),
                 ])
             </li>
