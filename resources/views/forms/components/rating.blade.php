@@ -13,12 +13,11 @@
     <div x-data="{
         state: $wire.{{ $applyStateBindingModifiers('entangle(\'' . $getStatePath() . '\')') }},
         clickHandler($event) {
-            console.log($event);
             @if($isDisabled())
                 return;
             @else
-                let target = $event.target.closest('.rating-item');
-                console.log(target);
+                let target = $event.target;
+                console.log($event.target);
                 let index = target.dataset.index || false;
                 this.state = index;
                 this.draw(index);
@@ -110,6 +109,7 @@
                 x-tooltip.raw="{{ $getTooltip($i) }}"
                 x-ref="{{$getRefId('ratingIcons', $i)}}">
                 @include('filament-rating-field::forms.components._rating-item', [
+                    'index' => $i,
                     'component' => $i <= $getState() ? $getSelectedIcon() : $getIcon(),
                 ])
             </li>
