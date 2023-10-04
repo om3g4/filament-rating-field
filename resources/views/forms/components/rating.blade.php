@@ -17,7 +17,8 @@
             @if($isDisabled())
                 return;
             @else
-                let target = $event.target.dataset.index ?  $event.target : $event.target.closest('.rating-item');
+                let target = $event.target.closest('.rating-item');
+                console.log(target);
                 let index = target.dataset.index || false;
                 this.state = index;
                 this.draw(index);
