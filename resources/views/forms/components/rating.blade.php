@@ -13,10 +13,11 @@
     <div x-data="{
         state: $wire.{{ $applyStateBindingModifiers('entangle(\'' . $getStatePath() . '\')') }},
         clickHandler($event) {
+            console.log($event);
             @if($isDisabled())
                 return;
             @else
-                let target = $event.target.closest('.rating-item');
+                let target = $event.target.dataset.index ?  $event.target : $event.target.closest('.rating-item');
                 let index = target.dataset.index || false;
                 this.state = index;
                 this.draw(index);
