@@ -16,7 +16,7 @@
             @if($isDisabled())
                 return;
             @else
-                let target = $event.target.dataset.index ?  $event.target : $event.target.closest('.rating-item');
+                let target = $event.target.closest('.rating-item');
                 let index = target.dataset.index || false;
                 this.state = index;
                 this.draw(index);
@@ -98,7 +98,7 @@
                 ])
             </div>
         </div>
-        <ul class="ml-auto flex">
+        <ul class="flex ml-auto">
         @for ($i = $getMin(); $i <= $getMax(); $i++)
             <li
                 class="rating-item"
